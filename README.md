@@ -1,8 +1,8 @@
 PassportScanner
 =============
 
-[![Issues](https://img.shields.io/github/issues-raw/evermeer/PassportScanner.svg?style=flat)](https://github.com/evermeer/PassportScanner/issues)
-[![Stars](https://img.shields.io/github/stars/evermeer/PassportScanner.svg?style=flat)](https://github.com/evermeer/PassportScanner/stargazers)
+[![Issues](https://img.shields.io/github/issues-raw/mirabeau-nl/PassportScanner.svg?style=flat)](https://github.com/mirabeau-nl/PassportScanner/issues)
+[![Stars](https://img.shields.io/github/stars/mirabeau-nl/PassportScanner.svg?style=flat)](https://github.com/mirabeau-nl/PassportScanner/stargazers)
 [![Version](https://img.shields.io/cocoapods/v/PassportScanner.svg?style=flat)](http://cocoadocs.org/docsets/PassportScanner)
 [![License](https://img.shields.io/cocoapods/l/PassportScanner.svg?style=flat)](http://cocoadocs.org/docsets/PassportScanner)
 [![Platform](https://img.shields.io/cocoapods/p/PassportScanner.svg?style=flat)](http://cocoadocs.org/docsets/PassportScanner)
