@@ -6,11 +6,12 @@
 //
 
 import Foundation
-
 import UIKit
+import TesseractOCR
+import GPUImage
 
 public class PassportScannerController: UIViewController {
-
+    
     /// Set debug to true if you want to see what's happening
     public var debug = false
     /// Set accuracy that is required for the scan. 1 = all checksums should be ok
@@ -20,7 +21,7 @@ public class PassportScannerController: UIViewController {
     
     ///  wait a fraction of a second between scans to give the system time to handle things.
     var timer: NSTimer? //
-
+    
     /// For capturing the video and passing it on to the filters.
     private let videoCamera: GPUImageVideoCamera
     
@@ -95,7 +96,7 @@ public class PassportScannerController: UIViewController {
                 self.exposure.exposure = currentExposure - (lighting - 2.88) * 2
             }
         }
-
+        
         // Chaining the filters
         videoCamera.addTarget(exposure)
         exposure.addTarget(highlightShadow)
@@ -145,9 +146,9 @@ public class PassportScannerController: UIViewController {
     public func scan() {
         self.timer?.invalidate()
         self.timer = nil
-
+        
         print("Start OCR")
-
+        
         // Get a snapshot from this filter, should be from the next runloop
         let currentFilterConfiguration = contrast
         currentFilterConfiguration.useNextFrameForImageCapture()
@@ -168,10 +169,10 @@ public class PassportScannerController: UIViewController {
                 let cropRect:CGRect! = CGRect(x: 350,y: 110,width: 350, height: 1700)
                 let imageRef:CGImageRef! = CGImageCreateWithImageInRect(snapshot.CGImage, cropRect);
                 //let croppedImage:UIImage = UIImage(CGImage: imageRef)
-               
+                
                 // Four times faster scan speed when the image is smaller. Another bennefit is that the OCR results are better at this resolution
                 let croppedImage:UIImage =   UIImage(CGImage: imageRef).resizedImageToFitInSize(CGSize(width: 350 * 0.5 , height: 1700 * 0.5 ), scaleIfSmaller: true)
-
+                
                 
                 // Rotate cropped image
                 let selectedFilter = GPUImageTransformFilter()
@@ -208,10 +209,10 @@ public class PassportScannerController: UIViewController {
                 }
             }
             self.StartScan(self)
-
+            
         }
     }
-
+    
     /**
     Override this function in your own class for processing the result
     
